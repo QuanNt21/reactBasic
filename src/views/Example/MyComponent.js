@@ -3,7 +3,7 @@ import React from "react";
 class MyComponent extends React.Component {
     //key:value
     state = {
-        name: "Ronaldo",
+        name: "QuanNt",
         channel: "Hoi Dan IT",
     };
 
@@ -16,6 +16,11 @@ class MyComponent extends React.Component {
         this.setState({
             name: event.target.value,
         });
+    };
+
+    handleClickButton = () => {
+        console.log("hit the button");
+        alert("click me");
     };
 
     render() {
@@ -31,6 +36,11 @@ class MyComponent extends React.Component {
                 </div>
                 <div className="second">
                     My youtube channel : {this.state.channel}
+                </div>
+                <div className="third">
+                    <button onClick={() => this.handleClickButton()}>
+                        Click me
+                    </button>
                 </div>
             </>
         );
