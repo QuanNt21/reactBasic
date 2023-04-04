@@ -19,11 +19,11 @@ class MyComponent extends React.Component {
     };
 
     handleClickButton = () => {
-        console.log("hit the button");
         alert("click me");
     };
 
     render() {
+        console.log(">>> call render: ", this.state);
         return (
             <>
                 <div className="first">
