@@ -1,67 +1,50 @@
 import React from "react";
 
-// class ChildComponent extends React.Component {
-//     //key:value
-//     state = {
-//         firstName: "",
-//         lastName: "",
-//     };
+class ChildComponent extends React.Component {
+    state = {
+        showJobs: false,
+    };
 
-//     /*
-//     JSX => return block
-//     fragment
-//     */
+    handleShowHide = () => {
+        this.setState({
+            showJobs: !this.state.showJobs,
+        });
+    };
 
-//     handleChangeFirstName = (event) => {
-//         this.setState({
-//             firstName: event.target.value,
-//         });
-//     };
-//     handleChangeLastName = (event) => {
-//         this.setState({
-//             lastName: event.target.value,
-//         });
-//     };
-//     handleSubmit = (event) => {
-//         event.preventDefault();
-//         console.log(">>> check data input: ", this.state);
-//     };
-//     //re-render
-//     render() {
-//         console.log(">>> check props: ", this.props);
-//         let { arrJobs } = this.props;
-//         return (
-//             <>
-//                 <div className="job-lists">
-//                     {arrJobs.map((item, index) => {
-//                         return (
-//                             <div key={item.id}>
-//                                 {item.title} - {item.salary}
-//                             </div>
-//                         );
-//                     })}
-//                 </div>
-//             </>
-//         );
-//     }
-// }
-
-const ChildComponent = (props) => {
-    let { arrJobs } = props;
-
-    return (
-        <>
-            <div className="job-lists">
-                {arrJobs.map((item, index) => {
-                    return (
-                        <div key={item.id}>
-                            {item.title} - {item.salary}
+    render() {
+        let { arrJobs } = this.props;
+        let { showJobs } = this.state;
+        let check = showJobs === true ? "showJobs = true" : "showJobs = false";
+        console.log(">>> check conditional: ", check);
+        return (
+            <>
+                {showJobs === false ? (
+                    <div>
+                        <button onClick={() => this.handleShowHide()}>
+                            Show
+                        </button>
+                    </div>
+                ) : (
+                    <>
+                        <div className="job-lists">
+                            {arrJobs.map((item, index) => {
+                                return (
+                                    <div key={item.id}>
+                                        {item.title} - {item.salary} $
+                                    </div>
+                                );
+                            })}
                         </div>
-                    );
-                })}
-            </div>
-        </>
-    );
-};
+                        <div>
+                            <button onClick={() => this.handleShowHide()}>
+                                Hide
+                            </button>
+                        </div>
+                    </>
+                )}
+            </>
+        );
+    }
+}
 
 export default ChildComponent;
