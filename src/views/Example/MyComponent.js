@@ -5,6 +5,8 @@ import ChildComponent from "./ChildComponent";
 class MyComponent extends React.Component {
     //key:value
     state = {
+        firstName: "",
+        lastName: "",
         arrJobs: [
             { id: "abcJob1", title: "Developers", salary: "500 $" },
             { id: "abcJob2", title: "Testers", salary: "400 $" },
