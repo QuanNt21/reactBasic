@@ -18,16 +18,17 @@ class MyComponent extends React.Component {
     fragment
     */
 
-    handleChangeFirstName = (event) => {
+    addNewJob = (job) => {
         this.setState({
-            firstName: event.target.value,
+            arrJobs: [...this.state.arrJobs, job],
         });
     };
 
-    addNewJob = (job) => {
-        console.log("check job from parent: ", job);
+    deleteAJob = (job) => {
+        let currenJobs = this.state.arrJobs;
+        currenJobs = currenJobs.filter((item) => item.id !== job.id);
         this.setState({
-            arrJobs: [...this.state.arrJobs, job],
+            arrJobs: currenJobs,
         });
     };
 
@@ -36,7 +37,10 @@ class MyComponent extends React.Component {
         return (
             <>
                 <AddComponent addNewJob={this.addNewJob} />
-                <ChildComponent arrJobs={this.state.arrJobs} />
+                <ChildComponent
+                    arrJobs={this.state.arrJobs}
+                    deleteAJob={this.deleteAJob}
+                />
             </>
         );
     }
