@@ -1,9 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-
-export const withRouter = (WrappedComponent) => (props) => {
-    return <WrappedComponent {...props} navigate={useNavigate()} />;
-};
+import { withRouter } from "../HOC/withRouter";
 
 class Home extends React.Component {
     componentDidMount() {
